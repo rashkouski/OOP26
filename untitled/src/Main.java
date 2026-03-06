@@ -9,6 +9,8 @@ public class Main {
 
         Polygon p1 = new Polygon(points);
         System.out.println(p1);
+        points[0].setx(1.2F);
+        System.out.println(p1);
 
     }
         public static Segment findmax (Segment[]segments){
