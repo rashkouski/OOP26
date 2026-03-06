@@ -8,9 +8,14 @@ public class Main {
         points[4]=new Point(162.4F,51.3F);
 
         Polygon p1 = new Polygon(points);
-        System.out.println(p1);
-        points[0].setx(1.2F);
-        System.out.println(p1);
+        Polygon p2 = new Polygon(new Point[]{
+                new Point(), new Point(10,0), new Point(12,6)
+        });
+
+        SvgScene scene = new SvgScene();
+        scene.addPolygon(p1);
+        scene.addPolygon(p2);
+        System.out.println(scene.toSvg());
 
     }
         public static Segment findmax (Segment[]segments){
