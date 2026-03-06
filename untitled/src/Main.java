@@ -15,7 +15,8 @@ public class Main {
         SvgScene scene = new SvgScene();
         scene.addPolygon(p1);
         scene.addPolygon(p2);
-        System.out.println(scene.toSvg());
+        //System.out.println(scene.toSvg());
+        System.out.println(p1.boundingBox());
 
     }
         public static Segment findmax (Segment[]segments){

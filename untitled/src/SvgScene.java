@@ -18,7 +18,7 @@ public class SvgScene {
             }
             polygonsString.append(p.toSvg()).append("\n");
         }
-        return String.format(Locale.ENGLISH, "sdsdsds\"%s\"", polygonsString);
+        return String.format(Locale.ENGLISH, "sdsdsd", polygonsString);
     }
 }
 
