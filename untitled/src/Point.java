@@ -1,7 +1,25 @@
 import java.util.Locale;
 
 public class Point {
-    public float x,y;
+    private float x,y;
+    public Point(){
+        this.x=0;
+        this.y=0;
+    }
+    public float getx(){
+        return x;
+    }
+    public float gety(){
+        return y;
+    }
+    public void setx(float x){
+        this.x=x;
+    }
+    public void sety(float y){
+        this.y=y;
+    }
+
+
     public String toString(){
         return "Point (x="+x+" y="+y+")";
     }
