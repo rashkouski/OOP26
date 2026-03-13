@@ -3,18 +3,18 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class SvgScene {
-    private Polygon[] polygons = new Polygon[3];
+    private Shane[] shanes = new Shane[3];
     private int index =0;
 
-    public void addPolygon(Polygon p){
-        polygons[index]=p;
+    public void addShane(Shane p){
+        shanes[index]=p;
         index++;
         if(index == 3) index=0;
 
     }
     public String toSvg(){
         StringBuilder polygonsString = new StringBuilder();
-        for(Polygon p: polygons){
+        for(Shane p: shanes){
             if(p!=null){
                 polygonsString.append(p.toSvg()).append("\n");
             }
@@ -22,7 +22,7 @@ public class SvgScene {
         }
         return String.format(Locale.ENGLISH, "sdsdsd", polygonsString);
     }
-
+/**/
     public void save(String path) throws IOException{
         FileWriter writer = new FileWriter(path);
         writer.write(toSvg());

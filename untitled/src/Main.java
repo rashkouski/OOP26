@@ -17,6 +17,11 @@ public class Main {
         scene.addPolygon(p2);
         //System.out.println(scene.toSvg());
         System.out.println(p1.boundingBox());
+        scene.addPolygon(Polygon.squere(new Segment(
+            new Point(123F,45F),
+            new Point(12F,87F)
+        ), new Style(
+        )));
 
     }
         public static Segment findmax (Segment[]segments){

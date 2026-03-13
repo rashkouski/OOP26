@@ -1,14 +1,20 @@
 import java.util.Arrays;
 import java.util.Locale;
 
-public class Polygon {
+public class Polygon extends Shane{
     private Point[] points;
-    public Polygon(Point[] points){
+
+    public Polygon(Point[] points,Style style){
+        super(style);
         this.points = new Point[points.length];
+        this.style= style;
         for(int i=0; i<points.length;i++){
             this.points[i]=new Point(points[i]);
 
         }
+    }
+    public Polygon(Point[] points){
+        this(points, new Style());
     }
     public Polygon(Polygon p){
         this(p.points);
@@ -41,5 +47,16 @@ public class Polygon {
                 if(p.getx() == maxY) maxY=p.gety();
             }
             return new BoundingBox(minX,minY,maxX-minX,maxY-minY);
+        }
+        public static Polygon squere(Segment segment, Style style){
+            Segment perp = segment.perpendicular();
+
+            Point[] pointSquere = new Point[4];
+            pointSquere[0]= segment.getP();
+            pointSquere[1]= perp.getP();
+            pointSquere[2]= segment.getQ();
+            pointSquere[3]= perp.getQ();
+            return new Polygon(pointSquere, style);
+
         }
 }
