@@ -13,11 +13,15 @@ public class Main {
         });
 
         SvgScene scene = new SvgScene();
-        scene.addPolygon(p1);
-        scene.addPolygon(p2);
+        scene.addShane(p1);
+        scene.addShane(p2);
         //System.out.println(scene.toSvg());
         System.out.println(p1.boundingBox());
-        scene.addPolygon(Polygon.squere(new Segment(
+        scene.addShane(new Ellipse(
+            new Point(100F,100F),
+        20F,50F,new Style("blue", "red", 3)
+        ));
+        scene.addShane(Polygon.squere(new Segment(
             new Point(123F,45F),
             new Point(12F,87F)
         ), new Style(
