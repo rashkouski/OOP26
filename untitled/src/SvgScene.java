@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Locale;
 
 public class SvgScene {
@@ -19,6 +21,12 @@ public class SvgScene {
             polygonsString.append(p.toSvg()).append("\n");
         }
         return String.format(Locale.ENGLISH, "sdsdsd", polygonsString);
+    }
+
+    public void save(String path) throws IOException{
+        FileWriter writer = new FileWriter(path);
+        writer.write(toSvg());
+        writer.close();
     }
 }
 
