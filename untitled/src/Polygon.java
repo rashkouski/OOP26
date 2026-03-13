@@ -14,7 +14,7 @@ public class Polygon extends Shane{
         }
     }
     public Polygon(Point[] points){
-        this(points, new Style());
+        this(points, new Style("black","black", 1.0));
     }
     public Polygon(Polygon p){
         this(p.points);

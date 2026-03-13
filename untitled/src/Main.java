@@ -19,7 +19,7 @@ public class Main {
         System.out.println(p1.boundingBox());
         scene.addShane(new Ellipse(
             new Point(100F,100F),
-        20F,50F,new Style("blue", "red", 3)
+        20F,50F,new Style("blue", "red", 3.0)
         ));
         scene.addShane(Polygon.squere(new Segment(
             new Point(123F,45F),
