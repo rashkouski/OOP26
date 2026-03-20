@@ -24,7 +24,7 @@ public class Main {
         scene.addShane(Polygon.squere(new Segment(
             new Point(123F,45F),
             new Point(12F,87F)
-        ), new Style(
+        ), new Style("blue", "red", 3.0
         )));
 
     }

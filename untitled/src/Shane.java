@@ -4,6 +4,6 @@ public abstract class Shane {
     public Shane(Style style){
         this.style=style;
     }
-
+    //BoundingBox boundingBox();
     public abstract String toSvg();
 }
