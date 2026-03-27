@@ -17,6 +17,12 @@ public class Main {
         System.out.println(parent.getYoungeastChild());
         System.out.println(parent.getChildren());
 
+        Family family = new Family();
+        for(Person person : people){
+            family.add(person);
+        }
+        Person mike = family.get("Mike Tson");
+        System.out.println(mike);
 
     }
     }
