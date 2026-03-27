@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class Person {
+public class Person implements Comparable<Person>{
     private String firstName;
     private String lastName;
     private LocalDate birthday;
@@ -22,7 +22,7 @@ public class Person {
         return children.add(child);
     }
     public Person getYoungeastChild(){
-        Iterator<Person> iter = this.children.iterator();
+       /* Iterator<Person> iter = this.children.iterator();
         Person now = iter.next();
         Person youngest = now;
         while(true){
@@ -34,7 +34,7 @@ public class Person {
             } catch (NoSuchElementException e){
                 break;
             }
-        }
+        }*/
         if(this.children.isEmpty()) return null;
         Person youngest = children.iterator().next();
         for(Person person : children){
