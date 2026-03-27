@@ -15,7 +15,7 @@ public class Main {
                 new Vec2(750, 200),
                 new Vec2(350, 200)
         })}, "yellow");
-
+/*
         Shape pentagon = new StrokeShaneDecorator(
                 new SolidFieldPolygon(new Vec2[]{
                 new Vec2(0, 260),
@@ -25,6 +25,7 @@ public class Main {
                 new Vec2(600, 260)
 
         }, "green"), "red", 12.0);
+        */
 
         Ellipse ellipse = new Ellipse(new Vec2(500, 700), 400, 100);
 
