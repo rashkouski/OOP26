@@ -1,8 +1,7 @@
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
+
+import static java.util.Arrays.stream;
 
 public class Person implements Comparable<Person>{
     private String firstName;
@@ -43,6 +42,15 @@ public class Person implements Comparable<Person>{
             }
         }
         return youngest;
+    }
+    public List<Person> getChildren(){
+        /*List<Person> result = new ArrayList<>();
+        result.addAll(children);
+
+        result.sort(Person::compareTo);
+        return result;
+        */
+        return children.stream().sorted().toList();
     }
     public int compareTo(Person other){
         return this.birthday.compareTo(other.birthday);

@@ -15,7 +15,7 @@ public class Main {
         Person parent = people.get(0);
         Person child = people.get(1);
         System.out.println(parent.getYoungeastChild());
-
+        System.out.println(parent.getChildren());
 
 
     }
