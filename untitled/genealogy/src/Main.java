@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,24 +7,11 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        List<Person> people = new ArrayList<>();
-
-        people.add(new Person("Mike", "Tson", LocalDate.of(1966,5,18)));
-        people.add(new Person("Snape", "Stelenski", LocalDate.of(2000,5,18)));
-        people.add(new Person("Turk", "Apache", LocalDate.of(1945,5,18)));
-        //System.out.println(people);
-        Person parent = people.get(0);
-        Person child = people.get(1);
-        //System.out.println(parent.getYoungeastChild());
-        //System.out.println(parent.getChildren());
-
-        Family family = new Family();
-        family.add(people.get(0));
-        family.add(people.get(1));
-        family.add(people.get(2));
-        family.add(new Person("Mike", "Tyson", LocalDate.of(1999,12,12)));
-
-        System.out.println(family.get("Mike Tyson"));
-
+        try {
+            List<Person> people = Person.fromCsv("family.csv");
+            System.out.println(people);
+        } catch (IOException e){
+            System.err.println("Blad dostempu do mpliku" + e.getMessage());
+        }
     }
     }
