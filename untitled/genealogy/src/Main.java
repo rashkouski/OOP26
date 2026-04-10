@@ -11,7 +11,9 @@ public class Main {
             List<Person> people = Person.fromCsv("family.csv");
             System.out.println(people);
         } catch (IOException e){
-            System.err.println("Blad dostempu do mpliku" + e.getMessage());
+            System.err.println("Blad dostempu do pliku" + e.getMessage());
+        } catch (NegativeLifespan e) {
+            throw new RuntimeException(e);
         }
     }
     }
