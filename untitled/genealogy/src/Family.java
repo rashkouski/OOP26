@@ -4,25 +4,36 @@ import java.util.List;
 import java.util.Map;
 
 public class Family {
-    private Map<String, List<Person>> people= new HashMap<>();
+    // Mapowanie: "Imię Nazwisko" -> lista osób o tym samym imieniu i nazwisku
+    private final Map<String, List<Person>> people = new HashMap<>();
 
-    public void add(Person... people){
-        for(Person person : people){
+
+    // Zamiast person.name() w klasie Family:
+
+    public void add(Person... peopleToAdd) {
+        for (Person person : peopleToAdd) {
+            if (person == null) continue; // Zabezpieczenie przed nullami
+
             String key = person.name();
-            if(this.people.containsKey(key)){
-                List<Person> temp = this.people.get(key);
-                temp.add(person);
-                temp.sort(Person::compareTo);
-            }
-            else{
-                List<Person> temp2 = new ArrayList<>();
-                temp2.add(person);
-                this.people.put(key, temp2);
-            }
-        }
 
+            // computeIfAbsent tworzy nową listę, jeśli klucza jeszcze nie ma
+            this.people.computeIfAbsent(key, k -> new ArrayList<>())
+                    .add(person);
+
+            // Sortowanie po każdym dodaniu (zapewnia porządek chronologiczny wg birthday)
+            this.people.get(key).sort(Person::compareTo);
+        }
     }
-    public List<Person> get(String key){
-        return people.get(key);
+
+    public List<Person> get(String key) {
+        // Zwracamy pustą listę zamiast null, aby uniknąć błędów u użytkownika klasy
+        return people.getOrDefault(key, new ArrayList<>());
+    }
+
+    // Opcjonalnie: metoda do pobierania wszystkich osób w drzewie
+    public List<Person> getAllPeople() {
+        return people.values().stream()
+                .flatMap(List::stream)
+                .toList();
     }
 }
