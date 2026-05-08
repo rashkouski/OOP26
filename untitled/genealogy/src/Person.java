@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Person implements Comparable<Person> {
     private final String firstName;
@@ -70,14 +72,24 @@ public class Person implements Comparable<Person> {
         return new Person(fname, lname, birthdate, deathdate);
     }
 
-    public static List<Person> fromCsv(String path) throws IOException, NegativeLifespan {
+    public static List<Person> fromCsv(String path, Function<String, String> postProcess, Predicate<Person> condition) throws IOException, NegativeLifespan {
         List<Person> people = new ArrayList<>();
         try (BufferedReader file = new BufferedReader(new FileReader(path))) {
             file.readLine(); // Pomiń nagłówek
             String line;
             while ((line = file.readLine()) != null) {
-                if (!line.isBlank()) {
-                    people.add(fromCsvLine(line));
+                if (line.isBlank()) continue;
+
+                // 1. Tworzymy obiekt tymczasowy, aby sprawdzić warunek Predicate
+                Person tempPerson = fromCsvLine(line);
+
+                if (condition.test(tempPerson)) {
+                    // 2. Jeśli warunek spełniony, przetwarzamy linię i tworzymy obiekt na nowo
+                    String processedLine = postProcess.apply(line);
+                    people.add(fromCsvLine(processedLine));
+                } else {
+                    // 3. Jeśli nie, dodajemy pierwotny obiekt
+                    people.add(tempPerson);
                 }
             }
         }
