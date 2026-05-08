@@ -96,7 +96,12 @@ public class Person implements Comparable<Person> {
                 .sorted(Comparator.comparingLong(Person::lifespan).reversed())
                 .toList(); // Teraz poprawnie domknięte
     }
-
+    public static Person getOldestLivingPerson(List<Person> people) {
+        return people.stream()
+                .filter(p -> p.death == null) // Tylko osoby żyjące
+                .min(Comparator.comparing(p -> p.birthday)) // Najstarsza osoba ma "najmniejszą" (najwcześniejszą) datę urodzenia
+                .orElse(null); // Zwróć null, jeśli lista jest pusta lub nikt nie żyje
+    }
     public String negativeLifespanMessage() {
         return String.format("Osoba %s %s ma datę śmierci %s wcześniejszą niż data urodzenia %s",
                 this.firstName, this.lastName, this.death, this.birthday);
