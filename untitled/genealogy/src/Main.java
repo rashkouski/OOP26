@@ -11,14 +11,17 @@ public class Main {
     public static void main(String[] args){
         CustomList<String> list = new CustomList<>();
 
-        list.addLast("ala");
-        list.addLast("ma");
-        list.addLast("kota");
-
+        list.add("ala");
+        list.add("ma");
+        list.add("kota");
         list.addFirst("Mala");
 
-        System.out.println(list.getFirst());
-        System.out.println(list.removeLast());
+        System.out.println("Element pod indeksem 1:"+ list.get(1));
+        System.out.println("Rozmiar listy: "+ list.size());
+
+        while(list.size()>0){
+            System.out.println("Usuwam :"+ list.removeLast());
+        }
     }
 
 }

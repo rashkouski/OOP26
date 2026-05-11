@@ -1,6 +1,7 @@
+import java.util.AbstractList;
 import java.util.NoSuchElementException;
 
-public class CustomList<T> {
+public class CustomList<T> extends AbstractList<T> {
     private Node<T> head =null;
     private Node<T> tail =null;
 
@@ -65,4 +66,37 @@ public class CustomList<T> {
         }
     }
 
+    @Override
+    public T get(int index) {
+        if(index == 0){
+            if(head == null) return null;
+            return head.value;
+        } else{
+            Node<T> current = head;
+            for(int i = 0; i<index;i++){
+                if(current.next == null) return null;
+                current = current.next;
+            }
+            return current.value;
+        }
+    }
+
+    @Override
+    public int size() {
+        if(head == null) return 0;
+        else {
+            Node<T> current = head;
+            int i = 1;
+            while(current.next!= null){
+                current = current.next;
+                i++;
+            }
+            return i;
+        }
+
+    }
+    public boolean add(T t){
+        addLast(t);
+        return true;
+    }
 }
