@@ -64,6 +64,7 @@ public class Person implements Comparable<Person> {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.y");
         LocalDate birthdate = LocalDate.parse(columns[1].trim(), formatter);
 
+
         LocalDate deathdate = null;
         if (columns.length > 2 && !columns[2].isBlank()) {
             deathdate = LocalDate.parse(columns[2].trim(), formatter);
